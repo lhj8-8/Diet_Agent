@@ -1,0 +1,336 @@
+
+.selfcheck-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px 12px;
+  box-sizing: border-box;
+}
+
+.selfcheck-container {
+  width: 100%;
+  max-width: 920px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px;
+  box-shadow:
+    0 18px 45px rgba(140, 160, 220, 0.45),
+    0 0 0 1px rgba(200, 210, 255, 0.55);
+  padding: 22px 26px 20px;
+  box-sizing: border-box;
+}
+
+.selfcheck-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.selfcheck-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.selfcheck-logo-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7f9cf5, #5ac8ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.selfcheck-logo-text {
+  font-weight: 700;
+  font-size: 15px;
+  color: #1c2450;
+}
+
+.selfcheck-header-login {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 14px;
+  font-size: 12px;
+  background: #222951;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.selfcheck-body {
+  margin-top: 4px;
+}
+
+.selfcheck-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #171d3f;
+  margin-bottom: 4px;
+}
+
+.selfcheck-sub {
+  font-size: 13px;
+  color: #4a4f7a;
+  margin-bottom: 16px;
+}
+
+.selfcheck-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px dashed rgba(170, 180, 230, 0.7);
+  font-size: 11px;
+  color: #8c92c0;
+}
+
+.step-item.active {
+  border-style: solid;
+  background: rgba(123, 148, 255, 0.08);
+  color: #2f3a88;
+}
+
+.step-index {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e1e4ff;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+.step-item.active .step-index {
+  background: linear-gradient(135deg, #7f9cf5, #5ac8ff);
+  color: #ffffff;
+}
+
+.selfcheck-error {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 98, 98, 0.08);
+  border: 1px solid rgba(255, 120, 120, 0.45);
+  font-size: 12px;
+  color: #a53434;
+}
+
+.selfcheck-section {
+  margin-top: 4px;
+  padding: 12px 0 4px;
+  border-top: 1px dashed rgba(200, 205, 240, 0.8);
+}
+
+.selfcheck-section h2 {
+  font-size: 16px;
+  color: #212856;
+  margin-bottom: 10px;
+}
+
+.selfcheck-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.form-field.full {
+  grid-column: 1 / -1;
+}
+
+.form-field label {
+  font-weight: 600;
+  color: #292f63;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  border-radius: 12px;
+  border: 1px solid rgba(190, 200, 245, 0.9);
+  padding: 7px 9px;
+  font-size: 12px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #7f9cf5;
+  box-shadow: 0 0 0 1px rgba(127, 156, 245, 0.6);
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.field-help {
+  font-size: 11px;
+  color: #7a81aa;
+  margin-top: 2px;
+}
+
+/* 버튼/칩 스타일 */
+
+.gender-group,
+.goal-group {
+  display: flex;
+  gap: 6px;
+}
+
+.chip-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(180, 190, 240, 0.9);
+  background: #f6f7ff;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #333a70;
+}
+
+.chip-btn.active {
+  border-color: #7f9cf5;
+  background: linear-gradient(135deg, #7f9cf5, #5ac8ff);
+  color: #ffffff;
+}
+
+/* 인바디 섹션 */
+
+.selfcheck-inbody {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(210, 215, 245, 0.9);
+}
+
+.selfcheck-inbody h3 {
+  font-size: 14px;
+  color: #232a62;
+  margin-bottom: 4px;
+}
+
+.inbody-guide {
+  font-size: 11px;
+  color: #7680b0;
+  margin-bottom: 8px;
+}
+
+/* 결과 섹션 */
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+  margin-top: 6px;
+}
+
+.result-card {
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(248, 249, 255, 0.96);
+  border: 1px solid rgba(195, 205, 255, 0.9);
+}
+
+.result-card h3 {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #232a62;
+}
+
+.result-main {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #181f45;
+}
+
+.result-sub {
+  font-size: 12px;
+  color: #555b89;
+  white-space: pre-line;
+}
+
+.result-login-box {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: rgba(127, 156, 245, 0.06);
+  border: 1px dashed rgba(127, 156, 245, 0.7);
+}
+
+.result-login-text {
+  font-size: 12px;
+  color: #283066;
+  margin-bottom: 10px;
+}
+
+.result-login-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 하단 버튼 */
+
+.selfcheck-footer-buttons {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* 공통 버튼 (메인과 통일감 위해 클래스명 동일 사용) */
+
+.primary-btn,
+.secondary-btn {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #7f9cf5, #5a7bff);
+  color: #ffffff;
+  box-shadow: 0 8px 18px rgba(90, 123, 255, 0.38);
+}
+
+.secondary-btn {
+  background: #f2f3ff;
+  color: #31376f;
+}
+
+/* 반응형 */
+
+@media (max-width: 768px) {
+  .selfcheck-container {
+    padding: 18px 14px 16px;
+  }
+
+  .selfcheck-grid,
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}

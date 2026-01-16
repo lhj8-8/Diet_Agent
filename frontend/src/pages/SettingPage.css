@@ -1,0 +1,161 @@
+/* 전체 레이아웃 */
+.settings-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; -> 삭제 또는 변경 */
+  align-items: flex-start; 
+  
+  /* 위쪽 여백을 원하는 만큼 수동으로 조절 (예: 60px ~ 100px) */
+  padding: 80px 20px; 
+  background: var(--bg-gradient);
+}
+
+/* 설정 컨테이너 (넓게 확장) */
+.settings-container {
+  width: 100%;
+  max-width: 800px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 헤더 부분 꾸미기 */
+.settings-header {
+  margin-bottom: 30px; /* 기존 40px에서 살짝 줄임 */
+  text-align: left;
+  padding-left: 10px;
+}
+
+.settings-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  /* -webkit-text-fill-color: transparent; 제목에 그라데이션 포인트 */
+}
+
+.settings-subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+/* 메인 카드 박스 */
+.settings-main {
+  background: var(--card-white);
+  border-radius: 32px;
+  padding: 40px;
+  box-shadow: var(--card-shadow);
+  border: var(--border-soft);
+  backdrop-filter: blur(10px); /* 은은한 유리 효과 */
+}
+
+/* 섹션 구분 */
+.settings-section {
+  margin-bottom: 40px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* 개별 아이템 디자인 */
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  background: rgba(var(--primary-light), 0.05); /* 아이템 배경에 아주 연한 색감 */
+  border-radius: 20px;
+  transition: transform 0.2s ease;
+}
+
+.setting-item:hover {
+  transform: scale(1.01); /* 호버 시 살짝 커지는 효과 */
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.item-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ✨ 고급스러운 커스텀 토글 스위치 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 32px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #cbd5e1;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+input:checked + .slider {
+  background: linear-gradient(90deg, var(--primary), #34d399);
+}
+
+input:checked + .slider:before {
+  transform: translateX(28px);
+}
+
+/* 다크모드 미세 조정: 너무 어둡지 않게 보정 */
+[data-theme="dark"] .settings-main {
+  background: rgba(30, 41, 59, 0.8); /* 약간의 투명도 부여 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .setting-item {
+  background: rgba(15, 23, 42, 0.4);
+}

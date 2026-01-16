@@ -1,0 +1,150 @@
+/* ==============================
+   Sidebar Base
+============================== */
+.sidebar-large {
+  position: fixed;
+  left: 20px !important; 
+  top: 90px !important;
+  height: calc(100vh - 110px) !important;
+  width: 260px;
+  border-radius: 24px !important;
+
+  /* 배경: 화이트 농도를 0.6으로 높여 훨씬 뽀얗게 만듦 */
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(20px) saturate(140%) !important;
+  
+  /* 테두리: 안쪽에서 빛나는 느낌을 주기 위해 화이트 선을 조금 더 진하게 */
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  
+  /* 그림자: 흰색이 강조되도록 그림자 농도를 아주 미세하게 상향 */
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.04) !important;
+  
+  padding: 24px 16px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* 펼침 / 접힘 */
+.sidebar-large.open {
+  width: 270px;
+  padding: 22px;
+}
+
+.sidebar-large.closed {
+  width: 72px;
+  padding: 22px 10px;
+}
+
+/* ==============================
+   Top (Logo)
+============================== */
+.sidebar-top {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 6px 8px;
+  border-radius: 14px;
+  cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+.sidebar-logo:hover {
+  background: rgba(235, 239, 255, 0.9);
+}
+
+.sidebar-logo:active {
+  transform: scale(0.96);
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* 로고 텍스트 */
+.logo-text-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.logo-text {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2f3e9e;
+}
+
+/* 접힘 상태 로고 중앙 */
+.sidebar-large.closed .sidebar-logo {
+  justify-content: center;
+  width: 100%;
+}
+
+/* ==============================
+   Menu
+============================== */
+.sidebar-menu {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  font-size: 14.5px;
+  color: #4b5aa6;
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.menu-item svg {
+  font-size: 18px;
+}
+
+.menu-item:hover {
+  background: rgba(240, 243, 255, 0.85);
+}
+
+/* Active */
+.menu-item.active {
+  background: linear-gradient(135deg, #eef1ff, #dfe6ff);
+  color: #2f3e9e;
+  box-shadow: 0 8px 18px rgba(120, 130, 255, 0.25);
+}
+
+/* ==============================
+   Footer
+============================== */
+.sidebar-footer {
+  padding-top: 16px;
+  padding-bottom: 40px;
+}
+
+.menu-item.logout {
+  color: #ff6b6b;
+}
+
+.menu-item.logout:hover {
+  background: rgba(255, 235, 235, 0.9);
+}

@@ -1,0 +1,147 @@
+/* Header 공통 */
+
+.auth-header {
+  width: 100%;
+  height: 70px; /* 70px에서 살짝 줄여서 더 슬림하고 세련되게 */
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 다시 중앙 정렬! */
+  gap: 40px; /* 로고와 메뉴 사이의 간격 조절 */
+
+  /* 사이드바와 동일하게 화이트 0.6 적용 */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(140%);
+
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  /* 하단 경계선: 너무 검은 선 대신 밝은 그레이로 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  
+  /* 네비바는 공중에 뜬 느낌을 위해 아주 연한 그림자만 추가 */
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+
+  /* 살짝 떠 있는 느낌 강화 */
+  box-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.6);
+
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.auth-header-inner {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.auth-logo-mark {
+  font-size: 22px;
+  font-weight: 700;
+  color: #7255f8;
+}
+
+.auth-logo-text {
+  font-size: 30px;
+  font-weight: 600;
+  color: #333;
+}
+
+.auth-nav {
+  display: flex;
+  gap: 14px;
+  margin-left: 200px;
+}
+
+.auth-nav-item {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.auth-nav-item:hover {
+  background: rgba(99, 102, 241, 0.12);
+  color: #4338ca;
+  transform: translateY(-1px);
+}
+
+.auth-nav-signup {
+  color: #fff;
+  background: linear-gradient(135deg, #7255f8, #a56bff);
+}
+
+.auth-profile-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.auth-profile-id {
+  font-weight: 600;
+}
+
+.auth-header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.auth-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.auth-profile-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.logout-btn {
+  color: #ff4444;
+  font-weight: 600;
+}
+.logo-icon {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+}
+

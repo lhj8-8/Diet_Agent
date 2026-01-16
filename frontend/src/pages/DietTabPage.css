@@ -1,0 +1,462 @@
+/* ================================
+   기본 색상 변수
+================================ */
+:root {
+  --bg-main: #f8fafc;        /* 페이지 전체 배경 */
+  --bg: #ffffff;             /* 카드/모달 배경 */
+  --card-bg: #ffffff;        /* 카드/모달 배경 */
+  --primary: #2563eb;
+  --primary-light: #ccfbf1;
+  --accent: #0ea5e9;
+  --text-main: #0f172a;
+  --text-sub: #64748b;
+  --border: rgba(226, 232, 240, 0.8);
+}
+
+/* ================================
+   다크 모드 색상 변수
+   => 페이지 배경만 바뀌게
+================================ */
+[data-theme="dark"] {
+  --bg-main: #1e293b;       /* 전체 페이지 배경만 어둡게 */
+  /* 내부 카드/모달/버튼/텍스트 등은 기존 변수 그대로 유지 */
+}
+
+/* ================================
+   페이지 & 레이아웃
+================================ */
+.diet-page {
+  /* background-color: var(--bg-main); */
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  color: var(--text-main);
+}
+
+.diettab-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.diet-section.full-width {
+  grid-column: span 2;
+}
+
+/* ================================
+   카드 스타일
+================================ */
+.diet-card {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
+.diettab-container > .diet-section:not(.user-diet-card) .diet-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* 버튼 하단 정렬 */
+  min-height: 437px;
+}
+
+.diet-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ================================
+   오늘의 식단
+================================ */
+.meal-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  transition: transform 0.2s;
+}
+
+.meal-item:hover {
+  transform: translateX(4px);
+}
+
+.meal-type {
+  color: var(--text-main);
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  min-width: 3rem;
+  text-align: center;
+  background-color: #f2f3ff;
+}
+
+.food-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.calories {
+  color: var(--text-sub);
+  font-size: 0.875rem;
+  margin-right: 1rem;
+}
+
+.delete-btn {
+  background: #fee2e2; /* 이건 accent랑 상관없음 */
+  color: var(--accent);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+
+.delete-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* ================================
+   AI 추천 & 선호 식단
+================================ */
+.diet-card-subsection {
+  border-bottom: 1px dashed var(--border);
+}
+
+.diet-card-subsection:last-child {
+  border-bottom: none;
+}
+
+.meal-row {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem; 
+}
+
+.meal-label {
+  font-weight: 700;
+  color: var(--primary);
+  width: 3rem;
+}
+
+.meal-value {
+  color: var(--text-main);
+}
+
+/* ================================
+   카드 내부 버튼 전체 스타일
+================================ */
+.meal-actions {
+  display: flex;
+  gap: 0.7rem;           /* 버튼 간 간격 */
+  flex-wrap: wrap;        /* 작은 화면에서 줄 바꿈 가능 */
+  margin-top: 1rem;
+}
+
+/* 버튼 전체 공통 스타일 */
+.meal-actions button {
+  flex: 1;                /* 버튼이 동일 너비 차지 */
+  padding: 0.75rem 0;     /* 세로 여백만 지정, 너비는 flex로 */
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: #D0EBF9;
+  color: var(--text-main);
+  text-align: center;
+  transition: all 0.2s;
+  padding: 10px;
+}
+
+/* 버튼 호버 */
+.meal-actions button:hover {
+  background: var(--bg-main);
+  border-color: var(--primary);
+}
+
+/* primary 버튼 */
+.meal-actions .primary-btn,
+.meal-actions button[onClick*="setModalOpen"],
+.meal-actions button[onClick*="applyAll"] {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.meal-actions .primary-btn:hover,
+.meal-actions button[onClick*="setModalOpen"]:hover,
+.meal-actions button[onClick*="applyAll"]:hover {
+  background: #4338ca;
+}
+
+/* ================================
+   모달 버튼 전체 스타일 통일
+================================ */
+.button-group button,
+.prefs-actions button {
+  padding: 0.75rem 1.5rem;   /* 버튼 크기 조금 키움 */
+  border-radius: 0.5rem;     /* 둥근 모서리 유지 */
+  font-weight: 600;
+  font-size: 1rem;           /* 폰트 조금 키움 */
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================
+   버튼 그룹 간격
+================================ */
+.button-group,
+.prefs-actions {
+  display: flex;
+  gap: 0.75rem;              /* margin 대신 gap 사용 */
+  justify-content: flex-end;  /* 오른쪽 정렬 */
+  flex-wrap: wrap;            /* 작은 화면에서는 줄 바꿈 */
+  margin-top: 1rem;           /* 위쪽 공간 */
+}
+
+/* ================================
+   색상 스타일
+================================ */
+.add-btn,
+.primary-btn {
+  background: linear-gradient(135deg, #7f9cf5, #5a7bff);
+  color: white;
+  border: none;
+}
+
+.add-btn:hover,
+.primary-btn:hover {
+  background: blue /* 진한 블루 */
+}
+
+.cancel-btn,
+.secondary-btn {
+  background: var(--card-bg);
+  color: var(--text-main);
+}
+
+.cancel-btn:hover,
+.secondary-btn:hover {
+  background: var(--bg-main);
+  border-color: var(--primary);
+}
+
+
+/* ================================
+   사용자 기록
+================================ */
+.user-diet-card {
+  grid-column: span 2;
+  min-height: unset;
+}
+
+.top-date-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  /* margin-bottom: 1.5rem; */
+  justify-content: space-between;
+}
+.date-title {
+  font-size: 1.15rem !important;
+  color: black !important;
+  font-weight: 800 !important;
+}
+
+.date-input {
+  appearance: none;
+  background: var(--bg);
+  border: 2px solid var(--primary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem; /* 캡슐 모양 */
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.date-input:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.15);
+}
+
+.log-items {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* 카드 최소/최대 너비 조정 */
+  gap: 1rem;
+}
+
+.log-item {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* 은은한 그림자 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 1px solid #D0EBF9;
+}
+
+/* 카드 호버 효과 */
+.log-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* 식사 타입 */
+.log-meal-type {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+/* 음식 이름 */
+.log-food-name {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #1F2D3D; /* 진한 글자 색으로 강조 */
+}
+
+/* 칼로리 / 단백질 정보 */
+.log-item-meta {
+  font-size: 0.85rem;
+  color: #4B5C6B; /* 보조 텍스트 색 */
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #dce3eb; /* 카드 안쪽 구분선 */
+  padding-top: 0.5rem;
+}
+
+/* 반응형 텍스트 조절 */
+@media (max-width: 480px) {
+  .log-items {
+    grid-template-columns: 1fr;
+  }
+  .log-item-meta {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+.log-meal-type {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--primary);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.log-food-name {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.log-item-meta {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 로그 합계 카드 */
+.log-summary {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-around;
+  background: #8ABBD9;
+  color: #1F2D3D;
+}
+
+.log-summary strong {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.log-summary span {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+/* ================================
+   Modal
+================================ */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.input-field, .input-group input, select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .diettab-container { grid-template-columns: 1fr; }
+  .diet-section.full-width,
+  .user-diet-card { grid-column: span 1; }
+}

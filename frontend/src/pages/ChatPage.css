@@ -1,0 +1,241 @@
+/* ====== Page background & centering ====== */
+.chatpage {
+  min-height: calc(100vh-70px);
+  width: 100%;
+  background: var(--bg-gradient); /* soft lavender like your screenshot */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 36px 16px;
+  box-sizing: border-box;
+}
+
+/* ====== Chat card ====== */
+.chat-card {
+  width: min(850px, 100%);
+  height: calc(90vh - 72px);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== Header ====== */
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+}
+
+.chat-title {
+  font-weight: 800;
+  font-size: 16px;
+  color: #111827;
+}
+
+.chat-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-select {
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: #f8fafc;
+  font-size: 13px;
+  outline: none;
+}
+
+.chat-session {
+  font-size: 12px;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+/* ====== Body (scroll area) ====== */
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #f7f8ff;
+
+  /* 불필요한 스크롤바 제거 */
+  scrollbar-width: thin;         /* 파이어폭스 */
+  scrollbar-color: rgba(0,0,0,0.2) transparent; /* 파이어폭스 */
+}
+/* 크롬/사파리/엣지 */
+.chat-body::-webkit-scrollbar {
+  width: 6px;   /* 필요하면 0px로 없앨 수도 있음 */
+}
+.chat-body::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 3px;
+}
+.chat-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ====== Row alignment ====== */
+.msg-row {
+  display: flex;
+  margin: 10px 0;
+}
+
+.msg-row.left {
+  justify-content: flex-start;
+}
+
+.msg-row.right {
+  justify-content: flex-end;
+}
+
+/* ====== Bubbles ====== */
+.bubble {
+  max-width: min(560px, 92%);
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.bubble.user {
+  background: #4f46e5; /* indigo */
+  color: #ffffff;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+}
+
+.bubble.assistant {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.06);
+}
+
+/* ====== Markdown inside assistant ====== */
+.bubble.assistant .md {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.bubble.assistant .md h3 {
+  margin: 12px 0 6px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.bubble.assistant .md h4 {
+  margin: 10px 0 6px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.bubble.assistant .md p {
+  margin: 6px 0;
+}
+
+.bubble.assistant .md ul,
+.bubble.assistant .md ol {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+
+.bubble.assistant .md li {
+  margin: 4px 0;
+}
+
+.bubble.assistant .md hr {
+  margin: 12px 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.bubble.assistant .md code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+}
+/* ====== Assistant 테이블 ====== */
+.bubble.assistant .md table {
+  width: 100%; /* 최대한 넓게 */
+  border-collapse: collapse;
+  margin: 10px 0;
+  table-layout: fixed; /* 균등한 열 너비 */
+  overflow-x: auto;
+}
+
+.bubble.assistant .md th,
+.bubble.assistant .md td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  word-break: keep-all; /* 한글 단어 줄바꿈 방지 */
+}
+
+.bubble.assistant .md th {
+  background-color: #f0f0f0;
+  font-weight: 700;
+}
+
+.bubble.assistant .md td {
+  background-color: #ffffff;
+}
+
+/* 작은 화면에서 스크롤 가능 */
+.bubble.assistant .md table {
+  display: block;
+  overflow-x: auto;
+}
+
+/* ====== Input bar ====== */
+.chat-inputbar {
+  display: flex;
+  gap: 10px;
+  padding: 12px 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+}
+
+.chat-input {
+  flex: 1;
+  resize: none;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  outline: none;
+  background: #f8fafc;
+}
+
+.chat-send {
+  min-width: 84px;
+  border: none;
+  border-radius: 14px;
+  background: #4f46e5;
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+}
+
+.chat-send:disabled {
+  opacity: 0.55;
+  cursor: default;
+  box-shadow: none;
+}

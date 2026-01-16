@@ -1,0 +1,36 @@
+.bottom-right-fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  z-index: 99999;
+}
+
+.fab-btn {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #4f61ff;
+  color: white;
+  font-size: 28px;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+  transition: 0.2s ease;
+}
+
+.fab-btn:hover {
+  transform: scale(1.1);
+  background: #3b4fed;
+}

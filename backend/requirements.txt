@@ -1,0 +1,31 @@
+# 웹 프레임워크
+Flask
+flask-cors
+flask-jwt-extended
+
+# 환경 변수 관리
+python-dotenv
+
+# HTTP 요청
+requests
+httpx
+
+# OpenAI API
+openai
+
+# DB 관련 (SQLite 기본 내장, 추가 라이브러리)
+SQLAlchemy
+Flask-SQLAlchemy
+
+# 데이터 처리/편의
+pandas
+numpy
+
+# 비밀번호 해싱 등 보안
+passlib[bcrypt]
+
+# JSON Web Token 추가 유틸
+PyJWT
+
+# CORS, 시리얼라이징 등
+marshmallow

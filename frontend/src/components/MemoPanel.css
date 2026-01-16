@@ -1,0 +1,389 @@
+/* ================= Memo ================= */
+.note-panel {
+  padding: 40px;
+  border-radius: 28px;
+  background: linear-gradient(145deg,
+    rgba(248,245,255,.95) 0%,
+    rgba(235,230,255,.95) 30%,
+    rgba(220,225,255,.96) 65%,
+    rgba(205,215,255,.97) 100%
+  );
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 12px 36px rgba(0,0,0,.12);
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:99999;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease, height 0.3s ease; /* Add transition for smooth resizing */
+}
+
+/* Floating Memo Mode (메모장) */
+.note-panel.memo-mode-floating {
+  width: 1000px;
+  height: 800px;
+}
+
+/* Calendar Memo Mode (달력창) */
+.note-panel.memo-mode-calendar {
+  width: 1200px;
+  height: 900px;
+}
+
+.note-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  padding-bottom:16px;
+  margin-bottom:20px;
+}
+
+.header-left,
+.header-right {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor: pointer;
+}
+
+.logo-img { width:40px; }
+.logo-text { 
+  font-size:20px; 
+  font-weight:700; 
+  color: #333;
+}
+
+.date-picker {
+  height:36px;
+  padding:0 12px;
+  border-radius:10px;
+  border:1px solid #dcdcdc;
+  background:rgba(255,255,255,.85);
+  font-size:14px;
+  cursor: pointer;
+}
+
+.note-close-btn {
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:none;
+  background:rgba(0,0,0,.08);
+  font-size:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+}
+
+.note-close-btn:hover {
+  background: rgba(0,0,0,.18);
+}
+
+.memo-title-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background: rgba(255,255,255,.85);
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.note-area {
+  padding:20px;
+  overflow-y:auto;
+  background: rgba(255,255,255,.88);
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,.05);
+  box-shadow: inset 0 4px 12px rgba(0,0,0,.04);
+  font-size:16px;
+  line-height:1.65;
+  color:#333;
+  margin-bottom: 20px;
+  outline: none; /* Ensure no default focus outline for contentEditable */
+  resize: none; /* Disable manual resize */
+  box-sizing: border-box; /* Ensure padding/border are included in element's total width/height */
+}
+
+/* Mode-specific max-heights for content editable areas */
+.note-area.editor.floating-content {
+  height: calc(100% - 200px); /* Reverted to fixed height */
+  overflow-y: auto; /* Ensure scrollability */
+  flex-grow: 0; /* Prevent from growing */
+  flex-shrink: 0; /* Prevent from shrinking */
+  min-height: 0; /* Allow to shrink to 0 */
+}
+
+.editing-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure it takes full height of its parent */
+  gap: 10px;
+}
+
+.note-area.editor.calendar-content {
+  flex-grow: 1; /* Allow to fill available space */
+  overflow-y: auto !important; /* Force scrollability */
+  min-height: 0; /* Allow to shrink */
+}
+
+.note-area:empty::before {
+  content: "오늘의 식단, 운동, 목표 등을 자유롭게 기록해보세요...";
+  color: rgba(0,0,0,.35);
+  font-size:15px;
+}
+
+body::before,
+.main-container::before,
+.background-logo,
+.bg-logo {
+  content: none !important;
+  display: none !important;
+}
+
+
+/* 메모장 하단 영역 */
+.note-footer {
+  margin-top: auto; /* Push footer to the bottom */
+  display: flex; /* Use flex to align buttons */
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
+  padding-top: 10px; /* Added padding to separate from memo area */
+}
+
+.note-save-btn,
+.note-delete-btn,
+.note-edit-btn {
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.note-save-btn:hover,
+.note-delete-btn:hover,
+.note-edit-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 저장 버튼 */
+.note-save-btn {
+  background: #4f61ff;
+  box-shadow: 0 8px 20px rgba(79, 97, 255, 0.45); /* More prominent shadow */
+}
+
+.note-save-btn:hover {
+  background: #3b4fed;
+}
+
+/* Calendar Memo View */
+.calendar-memo-view {
+  display: flex;
+  gap: 20px;
+  height: calc(100% - 70px); /* Adjusted height to account for the header and the moved footer */
+  margin-bottom: 20px; /* Add margin to separate from the moved footer */
+  overflow: hidden !important; /* Force hide overflow to prevent parent expansion */
+}
+
+.event-list-container {
+  flex: 0.25; /* Reduced size by half */
+  overflow-y: auto;
+  padding: 10px;
+  background: rgba(255,255,255,.88);
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: inset 0 4px 12px rgba(0,0,0,.04);
+}
+
+.event-list-container h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.event-item {
+  display: flex;
+  align-items: center; /* Reverted to align checkbox and title horizontally */
+  gap: 10px; /* Space between checkbox and title */
+  padding: 8px;
+  border-radius: 8px;
+  /* background-color: #e6ffe6; */ /* Base background removed as it will be set by kind-specific classes */
+  margin-bottom: 8px;
+}
+
+.event-item-kind-general {
+  background-color: #e0e0e0; /* Light Gray for General */
+}
+
+.event-item-kind-diet {
+  background-color: #FFECB3; /* Slightly lighter Gold/Yellow for Diet */
+}
+
+.event-item-kind-workout {
+  background-color: #b9f6ca; /* Brighter Light Green for Workout */
+}
+
+.event-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  /* Removed margin-right */
+}
+
+.event-item-title-text { /* Style for event title text */
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+  /* cursor: pointer; Removed to prevent clicking */
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1; /* Allow title to grow and take available space */
+  font-weight: 600; /* Make title bolder */
+}
+
+.event-item-tags {
+  margin-left: 8px; /* 제목과 태그 사이에 간격 추가 */
+  display: flex;
+  gap: 5px; /* 태그들 사이의 간격 */
+  align-items: center;
+}
+
+
+.event-content-view {
+  flex: 1 !important; /* Ensure it takes available space */
+  padding: 20px;
+  background: rgba(255,255,255,.95);
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.05);
+  display: flex; /* Make it a flex container to manage children height */
+  flex-direction: column; /* Stack children vertically */
+}
+
+.event-content-view h5 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.event-content-view p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  white-space: pre-wrap; /* Preserve whitespace and newlines */
+  flex-grow: 1; /* Allow the content to grow and take available space */
+  border: none; /* Ensure no border */
+  background: none; /* Ensure no background */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.note-delete-btn {
+  padding: 10px 22px; /* Consistent padding */
+  border-radius: 12px; /* Consistent border-radius */
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+  background: #ef4444; /* Red color for delete */
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.45); /* More prominent shadow */
+}
+
+.note-delete-btn:hover {
+  background: #dc2626;
+}
+
+.calendar-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  width: 100%;
+}
+
+.note-edit-btn {
+  padding: 10px 22px; /* Consistent padding */
+  border-radius: 12px; /* Consistent border-radius */
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+  background: #3b82f6; /* Blue color for edit */
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.45); /* More prominent shadow */
+}
+
+.note-edit-btn:hover {
+  background: #2563eb;
+}
+
+.event-content-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+}
+
+.edit-warning-text {
+    position: absolute;
+    bottom: 45px;
+    left: 45px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.form-group-combined {
+  margin-bottom: 10px;
+}
+
+.form-group-combined label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-pair {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.input-pair input,
+.input-pair select {
+  flex: 1;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background: rgba(255, 255, 255, .9);
+  font-size: 14px;
+}
+
+.date-separator {
+  font-weight: 600;
+}
+
+/* Style for memo content display */
+.memo-content-display {
+  white-space: pre-wrap; /* Preserves whitespace and line breaks */
+  word-wrap: break-word; /* Breaks long words */
+  line-height: 1.6;
+  color: #374151;
+  font-size: 0.95rem;
+}

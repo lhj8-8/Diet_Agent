@@ -1,0 +1,218 @@
+/* CENTERED CHAT WRAPPER */
+.chat-page {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 세로 중앙 */
+  min-height: 100vh;
+  padding: 0;
+  width: 800px;
+  margin: 0 auto;
+  margin-top: -20px;
+}
+
+/* CHAT CONTAINER */
+.chat-container {
+  width: 100%;
+  /* max-width: 500px; */
+  height: 80vh;            /* 항상 일정한 높이 */
+  background: white;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  overflow: hidden;        /* 컨테이너 자체는 고정, 메시지만 스크롤 */
+}
+
+/* HEADER */
+.chat-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+.logo {
+  font-weight: 800;
+  font-size: 18px;
+}
+.subtitle {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* 메시지 영역 */
+.chat-messages {
+  flex: 1;                 /* 남은 공간 모두 차지 */
+  padding: 16px;
+  overflow-y: auto;        /* 스크롤 가능 */
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  scroll-behavior: smooth; /* 스크롤 자연스럽게 */
+}
+
+/* BUBBLES */
+.chat-bubble {
+  max-width: 80%;
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 14px;
+  white-space: pre-wrap;
+  text-align: center;
+  margin: 10px auto;
+}
+.chat-bubble.bot {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+.chat-bubble.user {
+  background: #4f46e5;
+  color: white;
+}
+
+/* OPTIONS */
+.option-row {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.option-btn {
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+.option-btn:hover {
+  background: #e5e7eb;
+}
+
+/* INPUT BAR */
+.chat-input-bar {
+  padding: 12px 16px;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  gap: 10px;
+  background: white;
+}
+.chat-input-bar textarea {
+  flex: 1;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  padding: 8px 10px;
+  resize: none;
+  font-size: 14px;
+}
+.send-btn {
+  background: #3b82f6;
+  border: none;
+  border-radius: 12px;
+  padding: 0 16px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+.send-btn:hover {
+  background: #2563eb;
+}
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.chat-assistant-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+.assistant-label {
+  font-weight: 600;
+}
+
+.assistant-name {
+  font-weight: 700;
+  color: #111827;
+}
+
+.assistant-edit-btn,
+.assistant-save-btn,
+.assistant-cancel-btn {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.assistant-save-btn {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+}
+
+.assistant-cancel-btn {
+  background: #f9fafb;
+}
+
+.assistant-edit-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.assistant-edit-row input {
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+/* Quick suggested prompts */
+
+.chat-suggested-row {
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.chat-suggested-label {
+  font-weight: 600;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.chat-suggested-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.suggested-btn {
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 11px;
+  padding: 4px 8px;
+  cursor: pointer;
+}

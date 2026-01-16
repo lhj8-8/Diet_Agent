@@ -1,0 +1,416 @@
+/* ================================
+    🔷 레이아웃 및 테마 (Soft Mint Dashboard)
+   ================================ */
+
+:root {
+  /* [배경] 더 깨끗하고 맑은 블루그레이 */
+  --bg-main: #f8fafc; 
+  --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #e2eef9 100%); 
+  
+  /* [메인 포인트] 고급스러운 딥 틸(Teal)과 로열 블루 */
+  /* 민트보다 깊이 있는 에메랄드 그린을 써서 고급스러움을 살렸습니다 */
+  --primary-light: #ccfbf1;
+  --secondary: #2563eb;         /* 신뢰감 있는 샌프란시스코 블루 (스케줄) */
+  --accent: #0ea5e9;            /* 청량감을 더해주는 스카이 블루 */
+  
+  /* [카드 및 텍스트] 고대비 슬레이트 컬러 */
+  --card-white: #ffffff;
+  --text-dark: #0f172a;         /* 가독성을 극대화한 미드나잇 블루 */
+  --text-muted: #64748b;        /* 차분한 보조 설명색 */
+  
+  /* [그림자와 테두리] 더 부드럽고 넓게 퍼지는 고급스러운 그림자 */
+  --card-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --border-soft: 1px solid rgba(226, 232, 240, 0.8);
+
+  --color-text-light: #1e293b;
+}
+
+/* ================================
+   🌙 DARK THEME (Midnight Premium)
+   완전 검정보다 깊은 네이비 톤이 훨씬 고급스럽습니다.
+================================ */
+
+[data-theme="dark"] {
+  /* 1. 배경: 완전한 네이비에서 명도를 높인 '다크 슬레이트' 톤 */
+  --bg-main: #1e293b; 
+  --bg-gradient: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+
+  /* 2. 카드: 배경보다 확실히 밝게 하여 답답함을 제거 */
+  /* 이 정도 명도 차이가 있어야 화면에 층(Layer)이 생겨 시원해 보입니다. */
+  --card-white: #334155; 
+  
+  /* 3. 텍스트: 눈이 아픈 순백색 대신 부드러운 화이트 */
+  --text-dark: #f1f5f9;  
+  --text-muted: #cbd5e1;
+
+  /* 4. 포인트 컬러: 배경이 밝아졌으므로 더 생기 있는 형광 톤 적용 */
+  --primary: #5eead4;           /* 밝은 아쿠아 민트 (에너지) */
+  --secondary: #93c5fd;         /* 부드러운 스카이 블루 (신뢰) */
+
+  /* 5. 테두리 & 그림자: 밝아진 배경에 맞춰 더 투명하게 */
+  --border-soft: 1px solid rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+  --color-text-light: #f8fafc;
+}
+
+/* 전체 페이지 기본 */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', sans-serif;
+  background: var(--bg-gradient); /* 배경에 은은한 색감 부여 */
+  /* color: var(--text-dark); */
+}
+
+.app-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+/* 메인 컨테이너: 배경색과 대비되도록 설정 */
+.main-container {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px; /* 바깥쪽 여백 추가 */
+  box-sizing: border-box;
+}
+
+/* 💡 핵심: 컨텐츠가 올라갈 유리창/카드 느낌의 섹션 */
+.content-area {
+  background: rgba(255, 255, 255, 0.7); /* 반투명 화이트 */
+  backdrop-filter: blur(10px);        /* 배경 흐림 효과 (고급스러움) */
+  border-radius: 24px;
+  border: var(--border-soft);
+  box-shadow: var(--card-shadow);
+  min-height: calc(100vh - 48px);
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* 타이틀 스타일 예시 */
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+  /* display: flex; */
+  align-items: center;
+  gap: 8px;
+}
+
+h1::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+/* ================================
+   🔷 오른쪽 상단 로그인/마이페이지 버튼
+================================ */
+/* .top-right-buttons {
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 999999 !important;
+  display: flex;
+  gap: 10px;
+}
+
+.login-icon-btn,
+.mypage-icon-btn {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.login-icon-btn:hover,
+.mypage-icon-btn:hover {
+  background: #2563eb;
+} */
+
+/* ================================
+   🤖 Chatbot Popup Window (A 타입)
+================================ */
+.chatbot-window {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+
+  width: 280px;
+  height: 360px;
+
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f5f7ff;
+}
+
+.chat-msg {
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  max-width: 80%;
+  word-break: break-word;
+}
+
+.chat-msg.user {
+  background: #d7e1ff;
+  align-self: flex-end;
+}
+
+.chat-msg.bot {
+  background: #ececec;
+  align-self: flex-start;
+}
+
+.chatbot-input-box {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.chatbot-input-box input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.chatbot-input-box button {
+  margin-left: 6px;
+  padding: 8px 12px;
+  border: none;
+  background: #4f61ff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ================================
+   🔷 선택지 버튼
+================================ */
+.chatbot-options {
+  margin-top: 5px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chatbot-option-btn {
+  padding: 6px 10px;
+  background: #4f61ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.chatbot-option-btn:hover {
+  background: #3b4fed;
+}
+
+/* ================================
+   📝 메모장 플로팅 버튼
+================================ */
+.note-btn {
+  position: fixed;
+  bottom: 30px;   /* 챗봇과 동일한 높이 */
+  right: 100px;   /* ⬅ 챗봇 오른쪽 여백만큼 띄우기 */
+  
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #6d7dff, #5162ff);
+  color: white;
+
+  box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 9999;
+}
+
+.note-btn:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* 📝 메모장 버튼 */
+.note-btn {
+  position: fixed;
+  bottom: 30px;     /* 챗봇과 세로 위치 맞추기 */
+  right: 100px;     /* 👉 챗봇 왼쪽으로 이동 */
+  
+  width: 60px;
+  height: 60px;
+
+  background: #4f61ff;
+  color: white;
+  font-size: 28px;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.22);
+  transition: 0.2s ease;
+  z-index: 99999;
+}
+
+.note-btn:hover {
+  transform: scale(1.1);
+  background: #3b4fed;
+}
+
+/* ================= Floating ================= */
+.chatbot-toggle-btn,
+.note-floating-btn {
+  position: fixed;
+  bottom: 30px;
+  width: 60px; /* 통합: 55px -> 60px */
+  height: 60px; /* 통합: 55px -> 60px */
+  border-radius: 50%;
+  background:#0ea5e9;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,0.22); /* 통합: 0 6px 16px rgba(0,0,0,.15) -> 0 6px 20px rgba(0,0,0,0.22) */
+  font-size:28px; /* 통합: 22px -> 28px */
+  z-index: 200000; /* 통합: 1002 -> 99999 */
+  cursor: pointer;
+  transition: 0.2s ease; /* 통합: 추가 */
+}
+
+.chatbot-toggle-btn { right:30px; }
+.note-floating-btn { right:100px; }
+
+.chatbot-toggle-btn:hover,
+.note-floating-btn:hover {
+  transform: scale(1.1);
+  background: #3b4fed;
+}
+
+/* ================= Memo ================= */
+.note-panel {
+  width: 700px;
+  height: 580px;
+  padding: 40px;
+  border-radius: 28px;
+  background: linear-gradient(145deg,
+    rgba(248,245,255,.95) 0%,
+    rgba(235,230,255,.95) 30%,
+    rgba(220,225,255,.96) 65%,
+    rgba(205,215,255,.97) 100%
+  );
+  backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 12px 36px rgba(0,0,0,.12);
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  /* z-index:1003; */
+}
+
+.note-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(0,0,0,.08);
+  padding-bottom:16px;
+  margin-bottom:20px;
+}
+
+.header-left,
+.header-right {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor: pointer;
+}
+
+.logo-img { width:40px; }
+.logo-text { 
+  font-size:20px; 
+  font-weight:700; 
+  color: #333;
+}
+
+.date-picker {
+  height:36px;
+  padding:0 12px;
+  border-radius:10px;
+  border:1px solid #dcdcdc;
+  background:rgba(255,255,255,.85);
+  font-size:14px;
+  cursor: pointer;
+}
+
+.note-close-btn {
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:none;
+  background:rgba(0,0,0,.08);
+  font-size:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+}
+
+.note-close-btn:hover {
+  background: rgba(0,0,0,.18);
+}
+
+.note-area {
+  height: calc(100% - 130px);
+  padding:20px;
+  overflow-y:auto;
+  background: rgba(255,255,255,.88);
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,.05);
+  box-shadow: inset 0 4px 12px rgba(0,0,0,.04);
+  font-size:16px;
+  line-height:1.65;
+  color:#333;
+}
+
+.note-area:empty::before {
+  content: "오늘의 식단, 운동, 목표 등을 자유롭게 기록해보세요...";
+  color: rgba(0,0,0,.35);
+  font-size:15px;
+}

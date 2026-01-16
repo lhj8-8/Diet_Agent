@@ -1,0 +1,249 @@
+
+/* ============================================
+   메인 플로우 카드 (프로그램 설명 / 자가진단 / 로그인 / 커뮤니티)
+============================================ */
+
+.main-flow-grid {
+  width: 1100px;
+  margin: 0 auto 28px auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+@media (max-width: 1024px) {
+  .main-flow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.main-card {
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 12px 30px rgba(50, 70, 130, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(210, 220, 255, 0.6);
+  backdrop-filter: blur(10px);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.main-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.main-card-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.program-list li + li {
+  margin-top: 4px;
+}
+
+/* 자가진단 */
+
+.selfcheck-question {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.selfcheck-question p {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.selfcheck-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.option-btn {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 190, 255, 0.9);
+  background: rgba(248, 250, 255, 0.9);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.option-btn.active {
+  background: linear-gradient(135deg, #ff9f7b, #ff6b8b);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 6px 16px rgba(255, 107, 139, 0.28);
+}
+
+.option-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* 공통 버튼 스타일 */
+
+.primary-btn,
+.secondary-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, #7f9cf5, #5a7bff);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(90, 123, 255, 0.35);
+}
+
+.primary-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(90, 123, 255, 0.4);
+}
+
+.secondary-btn {
+  background: #fff;
+  color: #3f4a8d;
+  border: 1px solid rgba(150, 160, 230, 0.8);
+}
+
+.secondary-btn:hover {
+  background: rgba(245, 247, 255, 0.95);
+}
+
+/* 자가진단 결과 박스 */
+
+.selfcheck-result {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(247, 249, 255, 0.95);
+  border: 1px solid rgba(210, 220, 255, 0.8);
+  font-size: 13px;
+  color: #444;
+}
+
+.selfcheck-result h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+}
+
+/* ============================================
+   메인 배너
+============================================ */
+
+.main-banner {
+  width: 100%;
+  margin: 18px 0 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-content {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 18px;
+  padding: 22px 24px;
+  border-radius: 24px;
+  background: radial-gradient(circle at top left, rgba(143, 188, 255, 0.75), rgba(255, 255, 255, 0.98));
+  box-shadow:
+    0 14px 36px rgba(120, 150, 255, 0.35),
+    0 0 0 1px rgba(180, 195, 255, 0.25);
+}
+
+.banner-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #182045;
+  margin-bottom: 6px;
+}
+
+.banner-sub {
+  font-size: 14px;
+  color: #3b4168;
+  margin-bottom: 14px;
+}
+
+.banner-cta-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ff8fa2, #ff6f90);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(255, 120, 160, 0.45);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.banner-cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(255, 120, 160, 0.55);
+}
+
+/* ============================================
+   핵심 기능 섹션
+============================================ */
+
+.features-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.features-section .section-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1e2350;
+}
+
+.features-grid {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 18px;
+  padding: 14px 0 4px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.feature-card {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 20px rgba(150, 170, 255, 0.25);
+  border: 1px solid rgba(195, 205, 255, 0.7);
+}
+
+.feature-card h3 {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #242b63;
+}
+
+.feature-card p {
+  font-size: 12px;
+  color: #4c547f;
+  line-height: 1.5;
+}

@@ -1,0 +1,605 @@
+/* 1. 페이지 전체 폭 */
+.main-page {
+  width: 1200px;
+  padding: 20px 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 2. 메인 레이아웃 */
+.main-layout {
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding:28px 36px;
+}
+
+/* 3. 좌측/우측 비율 제대로 정리 */
+.main-left {
+  flex: 2;
+  width: 100%;
+}
+
+.main-right {
+  flex: 1;
+  width: 100%;
+  min-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ================= Header ================= */
+.main-header {
+  position: relative;
+  margin-bottom: 30px;
+  padding: 20px 24px;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      120% 120% at 0% 0%,
+      rgba(255,255,255,0.65) 0%,
+      rgba(255,255,255,0.25) 40%,
+      transparent 70%
+    ),
+    linear-gradient(
+      135deg,
+      #eef2ff 0%,
+      #dbeafe 45%,
+      #e0e7ff 100%
+    );
+
+  box-shadow:
+    0 20px 40px rgba(79, 70, 229, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+
+  overflow: hidden;
+}
+
+.main-header h1 {
+  position: relative;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.main-subtitle {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ================= Section Title ================= */
+.section-title {
+  font-family: "Playfair Display", "Times New Roman", Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+
+  font-style: italic;
+  transform: skewX(-2deg);
+  color: #0f172a;
+}
+
+.section-sub {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* 4. Calendar Section */
+.calendar-section {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  padding: 26px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  margin-bottom: 20px;
+}
+
+.calendar-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.month-picker label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.month-picker input[type="month"] {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background-color: #f9fafb;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+/* Weekday */
+.calendar-weekday {
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+  color: #1e293b;
+  font-weight: 700;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 0.85rem;
+  border-radius: 10px;
+}
+
+.calendar-cell {
+  position: relative;
+  height: 105px;
+  padding: 12px 10px;
+  border-radius: 16px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #ffffff, #f9fafb);
+  border: 1px solid #e5e7eb;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background 0.18s ease;
+}
+
+.calendar-cell:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(79, 70, 229, 0.18);
+  background: linear-gradient(180deg, #f8fafc, #eef2ff);
+}
+
+.calendar-cell.empty {
+  background: #f8fafc;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.calendar-cell.selected {
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+  border: 2px solid #4f46e5;
+  box-shadow: 0 12px 28px rgba(79, 70, 229, 0.35);
+}
+
+.calendar-day-number {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.calendar-cell:nth-child(7n + 1) .calendar-day-number {
+  color: #ef4444;
+}
+
+.calendar-cell:nth-child(7n) .calendar-day-number {
+  color: #2563eb;
+}
+
+.calendar-cell.selected .calendar-day-number {
+  color: #4338ca;
+}
+
+/* Event Dots */
+.calendar-dots {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 52%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.calendar-dots.period-dots {
+  top: auto;
+  bottom: 14px;
+}
+
+.dot-placeholder {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
+}
+
+.dot {
+  width: 26px;
+  height: 6px;
+  border-radius: 999px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.diet-dot {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+}
+
+.workout-dot {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+}
+
+.general-dot {
+  background: linear-gradient(90deg, #cbd5e1, #94a3b8);
+}
+
+.calendar-legend {
+  padding-top: 14px;
+  display: flex;
+  gap: 22px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.calendar-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+/* 5. Schedule Form and List (Right Side) */
+.note-card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  padding: 26px;
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+}
+
+.note-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.note-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #4f46e5;
+}
+
+.note-subtitle {
+  font-family: "Playfair Display", "Times New Roman", Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+
+  font-style: italic;
+  transform: skewX(-2deg);
+  color: #0f172a;
+}
+
+.date-picker {
+    padding: 8px 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #f9fafb;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 0.85rem;   /* 기존 0.9rem → 살짝 작게 */
+  color: #4b5563;       /* 기존 #374151 → 더 부드럽게 */
+  margin-bottom: 6px;   /* 기존 5px → 여유 */
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9fafb;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box; /* Important for padding */
+    resize: none; /* ← 이 줄 */
+    line-height: 1.6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+    outline: none;
+    background-color: #ffffff;
+}
+
+.form-row-2 {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row-2 .form-group {
+    flex: 1;
+}
+
+/* Save Button */
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  font-weight: 800;
+  font-size: 1.05rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.35);
+  margin-top: 24px;
+}
+
+.save-btn:hover {
+  background: linear-gradient(135deg, #4338ca, #4f46e5);
+}
+
+.save-btn:active {
+    transform: translateY(1px);
+}
+
+/* Schedule List */
+.schedule-list {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.schedule-empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 20px 0;
+    font-style: italic;
+}
+
+.schedule-item {
+    background-color: #f9fafb;
+    padding: 12px 15px;
+    border-left: 5px solid #4f46e5;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.schedule-title {
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.schedule-memo {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-bottom: 4px;
+}
+
+.schedule-date {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-align: right;
+}
+
+.auth-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fef3c7;
+    color: #92400e;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* 6. AI Helper Card */
+.ai-helper-card {
+    padding: 25px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+}
+
+.ai-helper-card .note-title {
+    color: #10b981; /* Emerald green for AI */
+}
+
+.ai-helper-text {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.ai-prompt-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.secondary-btn.small {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: #eff6ff; /* Light blue */
+    color: #1d4ed8; /* Darker blue */
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: left;
+}
+
+.secondary-btn.small:hover {
+    background-color: #dbeafe;
+}
+
+.ai-prompt-view {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+    color: #374151;
+    resize: vertical;
+}
+
+.calendar-weekday:nth-child(1) {
+  color: #ef4444; /* red */
+}
+
+/* 토요일 */
+.calendar-weekday:nth-child(7) {
+  color: #2563eb; /* blue */
+}
+
+
+/* 7. Responsiveness (Mobile/Tablet Layout) */
+@media (max-width: 1024px) {
+    .main-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main-left, .main-right {
+        min-width: 100%;
+    }
+
+    .calendar-cell {
+        height: 70px; /* Smaller height on mobile */
+        padding: 8px 5px;
+    }
+
+    .calendar-day-number {
+        font-size: 1rem;
+    }
+
+    .calendar-dots {
+        bottom: 5px;
+        left: 5px;
+        gap: 3px;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    .calendar-legend {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.85rem;
+    }
+
+    .main-header h1 {
+        font-size: 1.75rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .main-page {
+        padding: 15px;
+    }
+    .calendar-header-row {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    .month-picker {
+        align-self: flex-end;
+    }
+    .main-header {
+        margin-bottom: 15px;
+    }
+}
+
+.calendar-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 14px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* New: Search Group */
+.search-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between dropdown and search feature */
+}
+
+.search-feature {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.search-feature input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.search-feature button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #3b82f6; /* Blue */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap; /* Prevent button text from wrapping */
+}
+
+.search-feature button:hover {
+  background-color: #2563eb; /* Darker blue on hover */
+}
+
+.calendar-cell.search-highlight {
+  background-color: #bbf7d0; /* A light green highlight */
+  border: 1px solid #22c55e; /* Green border */
+  box-shadow: 0 0 5px rgba(34, 197, 94, 0.5); /* Soft green glow */
+}
+
+/* Search Result Dropdown */
+.search-result-dropdown {
+  /* flex: 1; Removed */
+  width: 130px; /* Reduced width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-result-dropdown .form-group {
+    margin-bottom: 0;
+    width: 100%; /* Ensure form-group takes full width of dropdown wrapper */
+}
+
+.search-result-dropdown select {
+    width: 100%; /* Ensure select takes full width of form-group */
+}

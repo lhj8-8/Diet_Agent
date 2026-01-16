@@ -1,0 +1,127 @@
+/* ======================================== */
+/*  전체 다이어트 페이지 레이아웃 */
+/* ======================================== */
+.diet-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ======================================== */
+/*  메인 컨테이너 - 탭과 컨텐츠 감싸기 */
+/* ======================================== */
+.diet-container {
+  width: 100%;
+  max-width: 1120px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* ======================================== */
+/*  탭 영역 */
+/* ======================================== */
+.diet-tabs {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  margin-bottom: 10px; /* 컨텐츠와 간격 */
+}
+
+.diet-tabs .tab {
+  flex: 1;
+  padding: 12px 0;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #64748b;
+  transition: all 0.2s ease;
+  background: #e2e8f0; /* 비활성 탭 배경 */
+  border-radius: 12px;
+  text-align: center;
+}
+
+.diet-tabs .tab.active {
+  background: skyblue !important;; /* 활성화 탭 색상 */
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ======================================== */
+/*  컨텐츠 영역 */
+/* ======================================== */
+.diettab-content, 
+.workout-content {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  min-height: 600px;
+  border-radius: 16px; /* 살짝만 둥글게 */
+}
+
+/* ======================================== */
+/* 내부 섹션 간격 조정 */
+/* ======================================== */
+.diet-section {
+  width: 100%;
+  background: transparent;
+  padding: 0;
+}
+
+.diet-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.diet-section-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  background: #eef2ff; /* 연한 블루 배경 */
+  padding: 6px 12px;
+  border-radius: 12px;
+}
+
+/* ======================================== */
+/*  카드 스타일 */
+/* ======================================== */
+.diet-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ======================================== */
+/*  내부 페이지 클래스 보정 */
+/* ======================================== */
+.diettab-content .diet-page,
+.workout-content .workout-page {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  min-height: auto !important;
+  display: block !important;
+}
+
+/* ======================================== */
+/*  스크롤바 커스텀 */
+/* ======================================== */
+.diet-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.diet-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}

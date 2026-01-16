@@ -1,0 +1,768 @@
+/* Global */
+:root{
+  --bg:#f7f9fc;
+  --card-bg: #ffffff;
+  --muted:#6b7280;
+  --accent: #6d9cff;
+  --accent-2: #bfe6ff;
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: linear-gradient(180deg, #fffef6 0%, var(--bg) 30%); color:#0b1b2b;}
+
+.page-wrap{
+  padding:28px 36px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header h1{margin:0 0 18px 0;font-size:22px;color:#0b1b2b}
+
+/* Grid layout */
+/* .grid-layout{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap:20px;
+  align-items:start;
+} */
+
+/* Utility column spans */
+.col-span-1{grid-column: span 1;}
+.col-span-2{grid-column: span 2;}
+.col-span-3{grid-column: span 3;}
+
+/* 카드 높이 및 정렬 보정 */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(14,37,77,0.06);
+  padding: 20px;
+  width: 100%; /* 너비 고정 해제 */
+  max-width: none; /* 제한 해제하여 그리드에 맞춤 */
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.card-header h3{margin:0;font-size:16px}
+.btn{background:var(--accent);color:white;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn.small{background:#f2f4f7;color:#0b1b2b;padding:6px 10px;font-size:13px}
+
+/* User card */
+/* 유저 카드 내부 그리드 보정 */
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.user-item{display:flex;flex-direction:column;padding:8px;border-radius:10px;background:linear-gradient(180deg,#fbfdff,#f3f8ff);box-shadow: inset 0 1px 0 rgba(255,255,255,0.6)}
+.user-item .label{font-size:12px;color:var(--muted)}
+.user-item .value{font-size:18px;font-weight:600;margin-top:6px}
+
+/* Goal card */
+.goal-body{display:flex;flex-direction:column;gap:8px}
+.goal-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0}
+.goal-badge{padding:6px 10px;border-radius:12px;color:white;font-weight:600}
+.badge-loss{background:#ff6b6b}
+.badge-gain{background:#4dabf7}
+.badge-maintain{background:#51cf66}
+
+.progress-wrap{display:flex;align-items:center;gap:12px}
+.progress-bar{flex:1;height:12px;background:#eef2ff;border-radius:999px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,#6d9cff,#69db7c)}
+
+.progress-num{min-width:48px;text-align:right;font-weight:700}
+
+/* Recommendation */
+.rec-grid{display:grid;grid-template-columns:1fr 200px;gap:16px;align-items:start}
+.meal-card{padding:10px;border-radius:12px;background:linear-gradient(180deg,#ffffff,#fbfeff);box-shadow:0 4px 12px rgba(11,27,43,0.04)}
+.meal-type{font-size:12px;color:var(--muted)}
+.meal-name{font-weight:600;margin-top:6px}
+.meal-cals{font-size:13px;color:var(--muted);margin-top:6px}
+
+.workout{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 4px 12px rgba(11,27,43,0.04)}
+.workout-title{font-size:13px;color:var(--muted)}
+.workout-name{font-weight:700;margin-top:8px}
+.workout-meta{font-size:13px;color:var(--muted);margin-top:6px}
+
+/* Schedule */
+.schedule-list{list-style:none;padding:0;margin:0}
+.schedule-item{display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;margin-bottom:8px;background:linear-gradient(180deg,#fff,#fbfdff)}
+.schedule-item.done{opacity:0.6;text-decoration:line-through}
+.schedule-item .time{width:60px;color:var(--muted);font-weight:600}
+.schedule-item .title{flex:1;font-weight:600}
+.schedule-item .tag{background:#eef2ff;padding:6px 8px;border-radius:8px;color:#0b1b2b;font-weight:600}
+
+/* Quick actions */
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.action-btn{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfeff);border:none;cursor:pointer}
+.action-btn .icon{font-size:20px;color:var(--accent)}
+.action-btn .label{font-size:13px;color:var(--muted)}
+
+/* Dashboard Page Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* 비율 조정 */
+  gap: 24px;
+  align-items: stretch; /* 카드 높이를 맞춤 */
+}
+
+/* Left / Right Columns */
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; 
+  }
+  .right-column, .left-column {
+    flex-direction: column;
+  }
+}
+
+
+/* Responsive */
+@media (max-width: 900px){
+  .grid-layout{grid-template-columns: repeat(2,1fr)}
+  .col-span-2{grid-column: span 2}
+}
+@media (max-width: 520px){
+  .grid-layout{grid-template-columns: 1fr}
+  .col-span-2{grid-column: span 1}
+}
+
+/* MyPage header - profile + AI assistant name */
+.mypage-header {
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6d9cff, #bfe6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 22px;
+  box-shadow: 0 8px 18px rgba(109, 156, 255, 0.45);
+}
+
+.profile-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-greeting {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-light);
+}
+
+.assistant-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.assistant-label {
+  font-weight: 600;
+}
+
+.assistant-name {
+  font-weight: 700;
+  color: #4c6fff;
+}
+
+.assistant-edit-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 4px 10px;
+  font-size: 12px;
+  background: #eef2ff;
+  color: #334155;
+  cursor: pointer;
+}
+
+.assistant-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.assistant-edit input {
+  border-radius: 999px;
+  border: 1px solid #c7d2fe;
+  padding: 4px 10px;
+  font-size: 12px;
+  min-width: 140px;
+}
+
+.save-btn {
+  margin-top: 10px;
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: #4b5563;
+  margin-top: 10px;
+}
+
+/* 모바일에서 헤더 정렬 보정 */
+@media (max-width: 600px) {
+  .profile-header {
+    align-items: flex-start;
+  }
+}
+
+/* 나의 정보 - 상단 사용자 카드 */
+.user-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.user-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-summary-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6d9cff, #bfe6ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.user-summary-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-summary-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b1b2b;
+}
+
+.user-summary-email {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.user-summary-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* 나의 정보 - 섹션 공통 */
+.body-info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.body-section {
+  padding-top: 10px;
+  border-top: 1px dashed rgba(203, 213, 225, 0.9);
+}
+
+.body-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 14px;
+}
+
+.inline-btn {
+  margin-top: 8px;
+  align-self: flex-end;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .user-summary-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+/* ===== Modal Overlay ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top, right, bottom, left = 0 */
+  background: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10000;
+}
+
+/* 나의 정보 수정 모달 */
+/* ===== Modal Overlay ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6); /* 더 깊이감 있는 다크 블루 톤 투명도 */
+  backdrop-filter: blur(4px); /* 배경 블러 효과로 모달 집중도 향상 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+}
+
+/* ===== Modal Card ===== */
+.modal-card {
+  background: #ffffff;
+  border-radius: 20px; /* 더 부드러운 라운딩 */
+  padding: 32px;
+  width: 480px; /* 조금 더 여유로운 너비 */
+  max-width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
+  position: relative;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+/* ===== Modal Header ===== */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.close-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* ===== Form Layout ===== */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== Profile Row (Grid system) ===== */
+.profile-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+/* ===== Profile Group ===== */
+.profile-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-group label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #475569;
+  margin-left: 2px;
+}
+
+.profile-group input,
+.profile-group select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 14px;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.profile-group input:focus,
+.profile-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* ===== Modal Actions ===== */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* 버튼 공통 스타일 */
+.btn-save, .btn-cancel {
+  height: 48px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 저장 버튼 (주요 액션) */
+.btn-save {
+  flex: 2; /* 취소 버튼보다 길게 설정 */
+  background-color: #3b82f6;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+}
+
+.btn-save:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+}
+
+.btn-save:active {
+  transform: translateY(0);
+}
+
+/* 취소 버튼 */
+.btn-cancel {
+  flex: 1;
+  background-color: #ffffff;
+  color: #64748b;
+  border: 1.5px solid #e2e8f0;
+}
+
+.btn-cancel:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+/* 에러/안내 메시지 */
+.auth-message {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #ef4444;
+  text-align: center;
+  background: #fef2f2;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* 반응형 대응 */
+@media (max-width: 480px) {
+  .modal-card {
+    padding: 24px;
+  }
+  .profile-row {
+    grid-template-columns: 1fr 1fr; /* 모바일에서는 2열로 */
+  }
+}
+
+/* 목표 변경 모달
+/* ===== Modal Box ===== */
+.modal-box {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px;
+  /* 가로 배치를 위해 너비를 조금 확장 (선택사항) */
+  width: 500px; 
+  max-width: 95%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* ===== Form Layout ===== */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 간격을 살짝 줄여 높이 확보 */
+}
+
+/* 가로 배치를 위한 새로운 Row 클래스 */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 13px; /* 가독성을 위해 살짝 조절 */
+  color: #475569;
+}
+
+/* Input Styles */
+.form-group input {
+  padding: 10px 14px; /* 패딩 소폭 축소 */
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 14px;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* ===== Goal Type Buttons (Segmented Control style) ===== */
+.goal-type-buttons {
+  display: flex;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 14px;
+}
+
+.btn-small {
+  flex: 1;
+  height: 40px !important;
+  font-size: 14px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #64748b !important;
+  box-shadow: none !important;
+}
+
+.btn-small.btn-primary {
+  background: #ffffff !important;
+  color: #3b82f6 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+/* ===== Row Layout ===== */
+.form-row.date-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ===== Modal Actions ===== */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-cancel {
+  flex: 1;
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+  color: #334155;
+}
+
+.btn-save {
+  flex: 2;
+  background-color: #3b82f6;
+  color: #ffffff;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.3);
+}
+
+.btn-save:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-save:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-box {
+    padding: 24px;
+    width: 90%;
+    border-radius: 20px;
+  }
+  
+  .form-row.date-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== /myinfo Tabs ===== */
+.myinfo-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 10px 12px 0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #d6dde7;
+  background: #ffffff;
+  color: #1f2a37;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab-btn:hover {
+  background: #f6f8fb;
+}
+
+.tab-btn.active {
+  border-color: #6ab7ff;
+  background: #e9f4ff;
+}
+/* Diet Table Section – Soft Neumorphism */
+.diet-table-section {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 18px 20px 16px;
+  border: 1px solid #edf0f6;
+  box-shadow: 0 18px 38px rgba(9, 22, 36, 0.06);
+  margin: 0 auto;
+  height: 100%;
+}
+
+/* Header: title + button */
+.diet-table-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.diet-table-head h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222b38;
+}
+
+.diet-add-btn {
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: 1px solid #edf0f6;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(9, 22, 36, 0.06);
+  transition: all 0.2s ease;
+}
+
+.diet-add-btn:hover {
+  box-shadow: 0 6px 12px rgba(9, 22, 36, 0.1);
+  background: #f0f4ff;
+}
+
+/* Diet Table */
+.diet-table {
+  display: grid;
+  gap: 8px;
+}
+
+/* Each Row */
+.diet-table-row {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr 1fr;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: #f9faff;
+  box-shadow: inset 0 1px 3px rgba(9, 22, 36, 0.05);
+  font-size: 14px;
+  color: #222b38;
+}
+
+/* Header Row */
+.diet-table-row.header {
+  background: #edf0f6;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+/* Loading / Empty messages */
+.diet-table-row div[style*="gridColumn"] {
+  text-align: center;
+  font-style: italic;
+  color: #8a98aa;
+}

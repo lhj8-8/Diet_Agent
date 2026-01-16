@@ -1,0 +1,243 @@
+.workout-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+  gap: 20px;
+  background: var(--bg); /* 전역 배경색 사용 */
+  border-radius: 18px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); /* 부드러운 그림자 */
+}
+
+/* LEFT */
+.workout-left {}
+
+.workout-left h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 15px;
+  color: var(--text-main);
+}
+
+.level-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.level-tabs button {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #d1d5db; /* 연한 그레이 */
+  background: var(--bg); /* 전역 배경 */
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.level-tabs button:hover {
+  background: #f3f4f6; /* 살짝 hover 효과 */
+}
+
+.level-tabs .active {
+  background: #4f8cff; /* 블루 포인트 */
+  color: white;
+  border: none;
+}
+
+/* 운동 리스트 */
+.workout-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.workout-list li {
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); /* 부드러운 그림자 */
+  background: var(--bg); /* 전역 배경 */
+  transition: all 0.2s ease;
+  border: 2px solid #f2f3ff;
+}
+
+.workout-list li:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.workout-list li.selected {
+  border: 2px solid #4f8cff;
+}
+
+.workout-list h4 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.workout-list span {
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.workout-list small {
+  display: block;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+/* RIGHT */
+.workout-right {}
+
+.workout-right h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  color: var(--text-main);
+}
+
+.preview-area {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 10%;
+  align-items: flex-start;
+}
+
+.preview-area::-webkit-scrollbar {
+  display: none;
+}
+
+.preview-card-wrapper {
+  flex-shrink: 0;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.preview-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+  background: var(--bg); /* 전역 배경 사용 */
+  border: 1px solid #cbd5e1;
+}
+
+.preview-card-image-placeholder {
+  width: 100%;
+  height: 120px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-card-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.preview-card-title {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-main);
+  background: #f3f6fb; /* 연한 블루톤 배경 */
+  border-top: 1px solid #e5ecf6;
+  border-radius: 0 0 12px 12px;
+  padding: 6px 8px;
+}
+
+.card-duration-below {
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: #e5f0ff; /* 연한 블루 */
+  border: 1px solid #cfdfff;
+  border-radius: 8px;
+  font-size: 11px;
+  color: #2563eb; /* 블루 강조 */
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.workout-subtitle {
+  align-self: center;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2563eb;
+  padding: 10px 14px;
+  margin: 50px auto 13px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  background: #eff6ff;
+}
+
+.meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.time {
+  color: #2563eb; /* 블루 포인트 */
+}
+
+.tag {
+  background: #f0f4ff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #2563eb;
+}
+
+.desc {
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.actions .primary {
+  background: #4f8cff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.actions a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #333;
+}

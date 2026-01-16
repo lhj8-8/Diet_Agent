@@ -1,0 +1,404 @@
+/* ===== 전체 페이지 레이아웃 ===== */
+.workout-page {
+  min-height: 100vh;
+  padding: 32px 12px;
+  display: flex;
+  justify-content: center;
+  background: var(--bg); /* 전역 배경색 사용 */
+}
+
+.workout-header h1 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.workout-sub {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.workout-section {
+  padding-top: 14px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.section-header h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+}
+
+/* ===== 카드 공통 ===== */
+.workout-card {
+  background: var(--bg); /* 전역 배경 사용 */
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  margin-top: 15px;
+}
+
+.workout-card-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.workout-card-body {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+/* ===== 난이도 칩 ===== */
+.difficulty-chips {
+  margin-top: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip-btn {
+  border-radius: 999px;
+  border: 1px solid #cbd5e1; /* 그레이 계열 */
+  padding: 4px 10px;
+  font-size: 12px;
+  background: var(--bg);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip-btn.active {
+  background: #4f8cff; /* 블루 포인트 */
+  color: white;
+  border-color: transparent;
+}
+
+/* ===== 추천 루틴 ===== */
+.routine-desc {
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.routine-list {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--text-main);
+  list-style: none;
+  counter-reset: routine-item;
+}
+
+.routine-list li {
+  position: relative;
+  margin-bottom: 6px;
+  padding-left: 25px;
+}
+
+.routine-list li::before {
+  counter-increment: routine-item;
+  content: counter(routine-item) ".";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #4f8cff; /* 블루 강조 */
+}
+
+/* ===== 비디오 링크 ===== */
+.video-links {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.video-label {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.video-links ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.video-links a {
+  color: #2563eb;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: var(--bg);
+  border: 1px solid #cbd5e1;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.video-links a:hover {
+  background: #f3f4f6;
+  border-color: #4f8cff;
+}
+
+/* Play 아이콘 */
+.video-links a::before {
+  content: '▶';
+  font-size: 10px;
+  line-height: 1;
+}
+
+/* ===== 폼 공통 (개선판) ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* 입력창 공통 */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  padding: 10px 14px;
+  font-size: 14px;
+  background: #f9fafb; /* 조금 밝은 배경 */
+  color: var(--text-main);
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* hover/포커스 효과 */
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #4f8cff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px rgba(79,140,255,0.2);
+}
+
+
+.form-group input[type="date"]:hover {
+  border-color: #4f8cff;
+}
+
+.form-group input[type="date"]:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px rgba(79,140,255,0.2);
+}
+
+/* placeholder 스타일 */
+.form-group input::placeholder {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* 요일 버튼 개선 */
+.weekday-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.week-chip {
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  padding: 6px 12px;
+  font-size: 13px;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.week-chip:hover {
+  border-color: #4f8cff;
+  background: #eef4ff;
+}
+
+.week-chip.active {
+  background: #4f8cff;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+/* ===== 일정 요약 ===== */
+.plan-summary {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+.plan-done-row {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* ===== 버튼 ===== */
+.primary-btn,
+.secondary-btn {
+  border-radius: 999px;
+  padding: 8px 14px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.primary-btn.small,
+.secondary-btn.small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.primary-btn {
+  background: #4f8cff;
+  color: #ffffff;
+}
+
+.secondary-btn {
+  background: var(--bg);
+  color: var(--text-main);
+  border: 1px solid #cbd5e1;
+}
+
+/* ===== 운동 기록 ===== */
+.workout-log-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.5fr);
+  gap: 15px;
+  align-items: stretch;
+}
+
+.week-total {
+  font-size: 13px;
+}
+
+/* .highlight {
+  font-weight: 700;
+  color: #4f8cff;
+} */
+
+.empty-text {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.workout-log-list {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.log-date-block {
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.log-date-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.log-date-text {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.log-itemm {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+}
+
+.custom-log-item {
+  padding: 4px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-right: 25px;
+}
+
+.log-main {
+  display: flex;
+  gap: 8px;
+}
+
+.log-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-sub);
+}
+
+.log-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.log-delete {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.log-delete:hover {
+  color: #4f8cff;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 960px) {
+  .workout-log-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .workout-container {
+    padding: 20px 14px 22px;
+  }
+}
