@@ -8,7 +8,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - DATABASE_URL=sqlite:///db/agent.db  # /app/agent.db 기준 - /app 안에 agent.db 파일이 생성된다는 것
+      - DATABASE_URL=sqlite:///agent.db  # /app/agent.db 기준 - /app 안에 agent.db 파일이 생성된다는 것
 
   frontend:
     image: lhj8/ai_agent_diet_scheduler_frontend:latest
