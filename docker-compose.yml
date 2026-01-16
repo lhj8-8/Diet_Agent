@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   backend:
-    image: yowon123/ai_agent_diet_scheduler_backend:latest
+    image: lhj8/ai_agent_diet_scheduler_backend:latest
     env_file:
       - .env
     ports:
@@ -11,7 +11,7 @@ services:
       - DATABASE_URL=sqlite:///db/agent.db  # /app/agent.db 기준 - /app 안에 agent.db 파일이 생성된다는 것
 
   frontend:
-    image: yowon123/ai_agent_diet_scheduler_frontend:latest
+    image: lhj8/ai_agent_diet_scheduler_frontend:latest
     ports:
       - "80:80"
     depends_on:
