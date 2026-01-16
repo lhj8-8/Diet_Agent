@@ -1,6 +1,11 @@
 # 🥗 Diet Agent  
 AI 기반 개인 맞춤형 다이어트 관리 플랫폼
 <br>- 문서 파일: [Diet_Agent_project.pdf](https://github.com/user-attachments/files/24659427/Diet_Agent_project.pdf)
+<br>- 배포 docker hub url :
+<br>https://hub.docker.com/r/lhj8/ai_agent_diet_scheduler_frontend
+<br>https://hub.docker.com/r/lhj8/ai_agent_diet_scheduler_backend
+
+<br>
 
 
 >보안상의 이유로 KEY 있는 .env 파일을 제외하여 올렸습니다. 
